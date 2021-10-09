@@ -1,6 +1,5 @@
-import 'package:app_design/menu.dart';
-import 'package:app_design/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:app_design/screens/post_grid.dart';
 import 'package:provider/provider.dart';
 import 'package:app_design/theme/theme_model.dart';
 import 'package:app_design/theme/theme_data.dart';
@@ -38,24 +37,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
     return Consumer(builder: (context, ThemeModel themeNotifier, child) {
       return Scaffold(
         appBar: AppBar(
           leadingWidth: 32,
           title: Row(
-            children: [
-              Image.asset(
-                themeNotifier.isDark
-                    ? 'assets/images/logo-dark.png'
-                    : 'assets/images/logo-light.png',
-                height: 32,
-                color:
-                    themeNotifier.isDark ? Colors.blueGrey[900] : Colors.white,
+            children: const [
+              Icon(
+                Icons.adb_rounded,
+                size: 32,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 12,
               ),
-              const Text("HelloOwlrd"),
+              Text("HelloOwlrd"),
             ],
           ),
           actions: [
@@ -71,16 +67,18 @@ class _HomePageState extends State {
             ),
           ],
         ),
-        drawer: Drawer(
-          child: SafeArea(
-            child: drawerMenu(),
-          ),
-        ),
+        drawer: queryData.size.width < 1024
+            ? const Drawer(
+                child: SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('MENU'),
+                  ),
+                ),
+              )
+            : null,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: HomeScreen(),
-          ),
+          child: PostGrid(),
         ),
       );
     });

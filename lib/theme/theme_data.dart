@@ -17,7 +17,7 @@ ElevatedButtonThemeData btnThemeLight = ElevatedButtonThemeData(
     primary: Colors.lightBlue[600],
     shape: const StadiumBorder(),
     padding: const EdgeInsets.fromLTRB(18, 8, 18, 8),
-    minimumSize: const Size(96, 40),
+    minimumSize: const Size(96, 48),
   ),
 );
 
@@ -27,22 +27,22 @@ ElevatedButtonThemeData btnThemeDark = ElevatedButtonThemeData(
     onPrimary: Colors.blueGrey[900],
     shape: const StadiumBorder(),
     padding: const EdgeInsets.fromLTRB(18, 8, 18, 8),
-    minimumSize: const Size(96, 40),
+    minimumSize: const Size(96, 48),
   ),
 );
 
 TextButtonThemeData txtBtnThemeLight = TextButtonThemeData(
   style: TextButton.styleFrom(
     primary: Colors.lightBlue[700],
-    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-    minimumSize: const Size(96, 44),
+    padding: const EdgeInsets.all(12),
+    minimumSize: const Size(96, 56),
   ),
 );
 TextButtonThemeData txtBtnThemeDark = TextButtonThemeData(
   style: TextButton.styleFrom(
     primary: Colors.cyan[200],
-    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-    minimumSize: const Size(96, 44),
+    padding: const EdgeInsets.all(12),
+    minimumSize: const Size(96, 56),
   ),
 );
 

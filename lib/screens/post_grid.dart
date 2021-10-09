@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app_design/helpers/responsive.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:show_up_animation/show_up_animation.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class PostGrid extends StatelessWidget {
+  PostGrid({Key? key}) : super(key: key);
 
   final List<String> images = [
     'https://images.unsplash.com/photo-1628958679198-d97eee188e6a?fit=crop&w=500&h=350&q=80',
@@ -22,51 +20,33 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveHelper(
-        mobile: ResponsiveGrid(
-          columnRatio: 6,
-          data: images,
-        ),
-        tab: ResponsiveGrid(
-          columnRatio: 4,
-          data: images,
-        ),
-        desktop: ResponsiveGrid(
-          columnRatio: 3,
-          data: images,
-        ));
-  }
-}
-
-class ResponsiveGrid extends StatelessWidget {
-  const ResponsiveGrid(
-      {Key? key, required this.columnRatio, required this.data})
-      : super(key: key);
-  final int columnRatio;
-  final List data;
-
-  @override
-  Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    int columnRatio = 12;
+    if (queryData.size.width >= 380) {
+      columnRatio = 6;
+    }
+    if (queryData.size.width >= 600) {
+      columnRatio = 4;
+    }
+    if (queryData.size.width >= 1024) {
+      columnRatio = 3;
+    }
+    if (queryData.size.width >= 1440) {
+      columnRatio = 2;
+    }
     return StaggeredGridView.countBuilder(
       crossAxisCount: 12,
-      itemCount: data.length,
+      itemCount: images.length,
       itemBuilder: (context, index) {
-        return ShowUpAnimation(
-          delayStart: Duration(milliseconds: 120 * index),
-          animationDuration: const Duration(seconds: 1),
-          curve: Curves.easeOutQuad,
-          direction: Direction.vertical,
-          offset: -0.8,
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                children: [
-                  Image.network(data[index]),
-                  const SizedBox(height: 8),
-                  const Text("Post title")
-                ],
-              ),
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Image.network(images[index]),
+                const SizedBox(height: 8),
+                const Text("Post title")
+              ],
             ),
           ),
         );
