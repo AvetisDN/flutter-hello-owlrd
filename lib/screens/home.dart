@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_design/helpers/responsive.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -50,15 +51,22 @@ class ResponsiveGrid extends StatelessWidget {
       crossAxisCount: 12,
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              children: [
-                Image.network(data[index]),
-                const SizedBox(height: 8),
-                const Text("Post title")
-              ],
+        return ShowUpAnimation(
+          delayStart: Duration(milliseconds: 120 * index),
+          animationDuration: const Duration(seconds: 1),
+          curve: Curves.easeOutQuad,
+          direction: Direction.vertical,
+          offset: -0.8,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  Image.network(data[index]),
+                  const SizedBox(height: 8),
+                  const Text("Post title")
+                ],
+              ),
             ),
           ),
         );

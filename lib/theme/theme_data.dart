@@ -31,6 +31,21 @@ ElevatedButtonThemeData btnThemeDark = ElevatedButtonThemeData(
   ),
 );
 
+TextButtonThemeData txtBtnThemeLight = TextButtonThemeData(
+  style: TextButton.styleFrom(
+    primary: Colors.lightBlue[700],
+    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+    minimumSize: const Size(96, 44),
+  ),
+);
+TextButtonThemeData txtBtnThemeDark = TextButtonThemeData(
+  style: TextButton.styleFrom(
+    primary: Colors.cyan[200],
+    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+    minimumSize: const Size(96, 44),
+  ),
+);
+
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.blue,
@@ -39,6 +54,7 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.blueGrey[100],
   canvasColor: Colors.blueGrey[100],
   elevatedButtonTheme: btnThemeLight,
+  textButtonTheme: txtBtnThemeLight,
   cardTheme: const CardTheme(
     margin: EdgeInsets.all(6),
   ),
@@ -56,6 +72,7 @@ ThemeData darkTheme = ThemeData(
     foregroundColor: Colors.blueGrey[900],
   ),
   elevatedButtonTheme: btnThemeDark,
+  textButtonTheme: txtBtnThemeDark,
   cardTheme: CardTheme(
     color: Colors.blueGrey[900],
     margin: const EdgeInsets.all(6),

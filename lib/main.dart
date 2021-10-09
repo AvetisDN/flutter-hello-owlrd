@@ -1,3 +1,4 @@
+import 'package:app_design/menu.dart';
 import 'package:app_design/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,12 +71,9 @@ class _HomePageState extends State {
             ),
           ],
         ),
-        drawer: const Drawer(
+        drawer: Drawer(
           child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Text("menu"),
-            ),
+            child: drawerMenu(),
           ),
         ),
         body: SafeArea(
